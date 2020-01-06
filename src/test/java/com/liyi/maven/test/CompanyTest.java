@@ -32,7 +32,7 @@ public class CompanyTest {
 			System.out.println("主营产品有没有值："+StringUtil.hasText(company.getGoods()));
 			System.out.println("地址产品有没有值："+StringUtil.hasText(company.getAddress()));
 			System.out.println("注册资本是不是数字："+StringUtil.isNumber(company.getMoney()));
-			System.out.println("******************");
+			System.out.println("*******************");
 		}
 	}
 }
