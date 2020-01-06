@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.liyi.maven.dao.CompanyDao">
+		<select id="selectCompany" resultType="Company"><!-- 查询 -->
+			SELECT * FROM company
+			<where>
+				<if test="id!=null and id!='' ">
+					id = #{id}
+				</if>
+				<if test="nickName!=null and nickName!='' ">
+					and nickName like "%"#{nickName}"%"
+				</if>
+				<if test="miaoshu!=null and miaoshu!='' ">
+					and miaoshu like "%"#{miaoshu}"%"
+				</if>
+				<if test="name!=null and name!='' ">
+					and name like "%"#{name}"%"
+				</if>
+				<if test="goods!=null and goods!='' ">
+					and goods like "%"#{goods}"%"
+				</if>
+				<if test="address!=null and address!='' ">
+					and address like "%"#{address}"%"
+				</if>
+				<if test="startMoney!=null and startMoney!='' ">
+					and money <![CDATA[>=]]> #{startMoney}
+				</if>
+				<if test="endMoney!=null and endMoney!='' ">
+					and money <![CDATA[<=]]> #{endMoney}
+				</if>
+				<if test="startBirthday!=null and startBirthday!='' ">
+					and birthday <![CDATA[>=]]> #{startBirthday}
+				</if>
+				<if test="endBirthday!=null and endBirthday!='' ">
+					and birthday <![CDATA[<=]]> #{endBirthday}
+				</if>
+				<if test="startCheckDate!=null and startCheckDate!='' ">
+					and checkDate <![CDATA[>=]]> #{startCheckDate}
+				</if>
+				<if test="endCheckDate!=null and endCheckDate!='' ">
+					and checkDate <![CDATA[<=]]> #{endCheckDate}
+				</if>
+			</where>
+		</select>
+		<select id="selectCompanyById" resultType="Company"><!-- 回显语句 -->
+			SELECT * FROM company where id = #{id}
+		</select>
+		<update id="updateCompany"><!-- 修改 -->
+			UPDATE `company` SET `nickName`=#{nickName}, `miaoshu`=#{miaoshu}, `name`=#{name}, `goods`=#{goods}, `address`=#{address}, `money`=#{money}, `birthday`=#{birthday}, `checkDate`=#{checkDate}, `status`=#{status}, `beizhu`=#{beizhu} WHERE (`id`=#{id})
+		</update>
+	</mapper>
